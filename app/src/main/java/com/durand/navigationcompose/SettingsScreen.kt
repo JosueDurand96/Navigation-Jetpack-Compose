@@ -3,7 +3,6 @@ package com.durand.navigationcompose
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,24 +11,14 @@ import androidx.compose.ui.unit.sp
 import com.durand.navigationcompose.core.navigation.SettingsInfo
 
 @Composable
-fun DetailScreen(name: String, navigateToSettings:(SettingsInfo) -> Unit, navigateBack: () -> Unit) {
+fun SettingsScreen(settingsInfo: SettingsInfo){
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.weight(1f))
-        Text(text = "DETAIL SCREEN $name", fontSize = 25.sp)
+        Text(text = "SETTINGS SCREEN", fontSize = 25.sp)
         Spacer(modifier = Modifier.weight(1f))
-        Button(onClick = {
-            val settingsInfo = SettingsInfo(
-                name = "Josue",
-                id = 1,
-                darkMode = true
-            )
-            navigateToSettings(settingsInfo)
-        }) {
-            Text(text = "Navegar a ajustes")
-        }
-        Button(onClick = { navigateBack() }) {
-            Text(text = "Logout")
-        }
+        Text(text = settingsInfo.name)
+        Text(text = settingsInfo.id.toString())
+        Text(text = settingsInfo.darkMode.toString())
         Spacer(modifier = Modifier.weight(1f))
     }
 }
